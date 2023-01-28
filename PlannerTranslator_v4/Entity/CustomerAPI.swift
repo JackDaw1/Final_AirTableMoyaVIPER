@@ -6,7 +6,9 @@ class CustomerAPI {
     public static let shared = CustomerAPI()
     
     public private(set) var customers: [CustomerItem] = [
+        
         CustomerItem(name: "proglib", info: "name_proglib", contact1: "@telegram", contact2: "proglib@proglib.com"),
+        
         CustomerItem(name: "medium", info: "name_medium", contact1: "@medium", contact2: "medium@medium.com"),
         
     ]
