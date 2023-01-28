@@ -82,26 +82,16 @@ extension OrderDetailViewController: OrderDetailViewProtocol {
         
         titleLabel.text = order.name
         customerLabel.text = order.customer
-//        if order.customer != nil {
-//            customerLabel.text = (order.customer)!
-//        }
+
         if order.price != nil {
             priceLabel.text = String(order.price!)
         }
-        //подправить с экстеншионом тустринг
+
         deadlineLabel.text = "date"
         if order.time != nil {
             timeLabel.text = String(order.time!)
         }
-//        if order.price != nil {
-//            priceLabel.text = String(order.price!)
-//        }
-//        if order.price != nil {
-//            priceLabel.text = String(order.price!)
-//        }
-//        if order.price != nil {
-//            priceLabel.text = String(order.price!)
-//        }
+
     }
     
 }

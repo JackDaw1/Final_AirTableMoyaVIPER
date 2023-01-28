@@ -1,6 +1,6 @@
 import UIKit
 
-protocol OrderDetailViewProtocol: class {
+protocol OrderDetailViewProtocol: AnyObject {
     
     var presenter: OrderDetailPresenterProtocol? { get set }
     
@@ -8,7 +8,7 @@ protocol OrderDetailViewProtocol: class {
     func showOrder(_ order: OrderItem)
 }
 
-protocol OrderDetailPresenterProtocol: class {
+protocol OrderDetailPresenterProtocol: AnyObject {
     
     var view: OrderDetailViewProtocol? { get set }
     var interactor: OrderDetailInteractorInputProtocol? { get set }
@@ -20,7 +20,7 @@ protocol OrderDetailPresenterProtocol: class {
     func deleteOrder()
 }
 
-protocol OrderDetailInteractorInputProtocol: class {
+protocol OrderDetailInteractorInputProtocol: AnyObject {
     
     var presenter: OrderDetailInteractorOutputProtocol? { get set }
     var orderItem: OrderItem? { get set }
@@ -30,14 +30,14 @@ protocol OrderDetailInteractorInputProtocol: class {
     func editOrder(link: String?, deadline: Date?, made: Bool?, paid: Bool?, name: String, price: Double?, numberOfSigns: Int64?, customer:String?, time: Int64?)
 }
 
-protocol OrderDetailInteractorOutputProtocol: class {
+protocol OrderDetailInteractorOutputProtocol: AnyObject {
     
     // INTERACTOR -> PRESENTER
     func didDeleteOrder()
     func didEditOrder(_ order: OrderItem) 
 }
 
-protocol OrderDetailRouterProtocol: class {
+protocol OrderDetailRouterProtocol: AnyObject {
     
     static func createOrderDetailRouterModule(with order: OrderItem) -> UIViewController
     

@@ -64,26 +64,8 @@ class AddOrderViewController: UIViewController, UIPickerViewDelegate {
     func save() {
         //TODO: настроить алерт сообщение о важности внесения имени
         handler?(OrderItem(link: nil, deadline: nil, paid: nil, name: nameTextField.text ?? "", price: nil, numberOfSigns: nil, customer: customerTextField.text))
-//        switchView.isSelected
-//        pickView.selectedRow(inComponent: 0)
+
         self.dismiss(animated: true)
     }
-//
-//    func editTapped(_ sender: Any) {
-//        let alertController = UIAlertController(title: "Edit Order Item", message: "Enter title and content", preferredStyle: .alert)
-//
-//        alertController.addTextField { $0.text = self.titleLabel.text }
-//        alertController.addTextField { $0.text = self.contentLabel.text }
-//        alertController.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { [weak self](_) in
-//            let titleText = alertController.textFields![0].text ?? ""
-//            let contentText = alertController.textFields![1].text ?? ""
-//            guard !titleText.isEmpty else { return }
-//            self?.presenter?.editOrder(title: titleText, content: contentText)
-//        }))
-//
-//        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-//        present(alertController, animated: true, completion: nil)
-//
-//    }
     
 }

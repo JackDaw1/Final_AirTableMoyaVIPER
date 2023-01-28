@@ -32,9 +32,8 @@ class OrderListViewController: UITableViewController {
         tableView.tableFooterView = UIView()
         tableView.register(OrderTableViewCell.self, forCellReuseIdentifier: "OrderTableViewCell")
         
-        let newRightBarButtonItem = UIBarButtonItem(title: "+", style: UIBarButtonItem.Style.plain, target: self, action: #selector(addTapped))//
-        //  let newRightBarButtonItem = UIBarButtonItem(image: <#T##UIImage?#>, style: UIBarButtonItem.Style.plain, target: self, action: #selector(addTapped))
-        //Настройка текста кнопки если она использует текст
+        let newRightBarButtonItem = UIBarButtonItem(title: "+", style: UIBarButtonItem.Style.plain, target: self, action: #selector(addTapped))
+
         newRightBarButtonItem.setTitleTextAttributes(
             [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 36.0),
              NSAttributedString.Key.foregroundColor : UIColor.blue],
@@ -44,9 +43,10 @@ class OrderListViewController: UITableViewController {
             [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 36.0),
              NSAttributedString.Key.foregroundColor : UIColor.gray],
             for: UIControl.State.selected)
-        //
+        
         navigationItem.rightBarButtonItem = newRightBarButtonItem
     }
+    
     //определяем сколько секций в таблице
     override func numberOfSections(in tableView: UITableView) -> Int {
         sectionsArray.count
@@ -73,9 +73,7 @@ class OrderListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         sectionsArray[section].date.toString()
     }
-//    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        <#code#>
-//    }
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let sectionObject = sectionsArray[indexPath.section]
         let order = sectionObject.orders[indexPath.row]
