@@ -1,0 +1,6 @@
+framework module Pods_PlannerTranslator_v4 {
+  umbrella header "Pods-PlannerTranslator_v4-umbrella.h"
+
+  export *
+  module * { export * }
+}
