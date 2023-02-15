@@ -9,13 +9,6 @@ let defaultJSONDecoder: JSONDecoder = {
     return decoder
 }()
 
-let defaultJSONEncoder: JSONEncoder = {
-    let encoder = JSONEncoder()
-    encoder.dateEncodingStrategy = .secondsSince1970
-    // TODO: Setup it
-    return encoder
-}()
-
 protocol Transporting: Decodable {}
 
 enum WDNetworkError: Error {

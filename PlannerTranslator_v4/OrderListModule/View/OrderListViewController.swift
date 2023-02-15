@@ -81,7 +81,6 @@ class OrderListViewController: UITableViewController {
         if editingStyle == .delete {
             let sectionObject = sectionsArray[indexPath.section]
             let orderItem = sectionObject.orders[indexPath.row]
-            presenter?.removeOrder(orderItem)
         }
     }
     

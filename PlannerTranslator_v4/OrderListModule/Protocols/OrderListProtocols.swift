@@ -1,6 +1,6 @@
 import UIKit
 
-protocol OrderListViewProtocol: class {
+protocol OrderListViewProtocol: AnyObject {
     
     var presenter: OrderListPresenterProtocol? { get set }
     
@@ -9,7 +9,7 @@ protocol OrderListViewProtocol: class {
     func showErrorMessage(_ message: String)
 }
 
-protocol OrderListPresenterProtocol: class {
+protocol OrderListPresenterProtocol: AnyObject {
     
     var view: OrderListViewProtocol? { get set }
     var interactor: OrderListInteractorInputProtocol? { get set }
@@ -19,24 +19,23 @@ protocol OrderListPresenterProtocol: class {
     func viewWillAppear()
     func showOrderDetail(_ order: OrderItem)
     func addOrder(_ order: OrderItem)
-    func removeOrder(_ order: OrderItem)
 }
 
-protocol OrderListInteractorInputProtocol: class {
+protocol OrderListInteractorInputProtocol: AnyObject {
     
     var presenter: OrderListInteractorOutputProtocol? { get set }
     
     // PRESENTER -> INTERACTOR
     func retrieveOrders()
     func saveOrder(_ order: OrderItem)
-    func deleteOrder(_ order: OrderItem)
+//    func deleteOrder(_ order: OrderItem)
 }
 
 protocol OrderListInteractorOutputProtocol: AnyObject {
     
     // INTERACTOR -> PRESENTER
     func didAddOrder(_ order: OrderItem)
-    func didRemoveOrder(_ order: OrderItem)
+//    func didRemoveOrder(_ order: OrderItem)
     func didRetrieveOrders(_ orders: [OrderItem])
     func onError(message: String)
 }

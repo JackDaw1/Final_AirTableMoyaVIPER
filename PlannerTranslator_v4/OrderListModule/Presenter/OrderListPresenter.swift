@@ -12,7 +12,6 @@ class OrderListPresenter: OrderListPresenterProtocol {
     func showOrderDetail(_ order: OrderItem) {
         guard let view = view else { return }
         router?.presentOrderDetailScreen(from: view,
-//                                         outputPreneter: self,
                                          for: order)
     }
     
@@ -25,17 +24,9 @@ class OrderListPresenter: OrderListPresenterProtocol {
         interactor?.retrieveOrders()
     }
     
-    func removeOrder(_ order: OrderItem) {
-        interactor?.deleteOrder(order)
-    }
-    
 }
 
 extension OrderListPresenter: OrderListInteractorOutputProtocol {
-    func didRemoveOrder(_ order: OrderItem) {
-        interactor?.retrieveOrders()
-    }
-    
     
     func didAddOrder(_ order: OrderItem) {
         interactor?.retrieveOrders()
@@ -53,7 +44,6 @@ extension OrderListPresenter: OrderListInteractorOutputProtocol {
             }
         
         var sectionsResult = [SectionOrdersItem]()
-        //let deadline = orders.first?.deadline?.toDate()
         var currentDate = deadline ?? Date()
         var sectionItem: SectionOrdersItem = SectionOrdersItem(date: currentDate)
         for order in array {
@@ -78,16 +68,3 @@ extension OrderListPresenter: OrderListInteractorOutputProtocol {
     }
 }
 
-//extension OrderListPresenter: OrderDetailPresenterOutputProtocol {
-//    func didDeleteOrder(_ order: OrderItem) {
-//        //это обработка завершения редактирования заказа и закрытия экрана деталей заказа
-//        //тут глушим полную перезагрузку экрана потому что она уже есть в viewWillAppear в презентере экрана OrdersListViewController
-//        //        interactor?.retrieveOrders()
-//    }
-//
-//    func didEditOrder(_ order: OrderItem) {
-//        //тут глушим полную перезагрузку экрана потому что она уже есть в viewWillAppear в презентере экрана OrdersListViewController
-//        //        interactor?.retrieveOrders()
-//    }
-//
-//}

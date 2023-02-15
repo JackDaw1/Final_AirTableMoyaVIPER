@@ -101,7 +101,7 @@ extension RequestType: WDTargetType {
     }
     
     var headers: [String : String]? {
-        var headersDictionary = MoyaNetworkManager.shared.headers
+        let headersDictionary = MoyaNetworkManager.shared.headers
         //        switch self {
         //        default:
         //            headersDictionary["content-type"] = "application/json-patch+json"

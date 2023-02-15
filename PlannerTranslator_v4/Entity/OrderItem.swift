@@ -12,6 +12,7 @@ struct SectionOrdersItem {
     var date: Date
 }
 
+//Расширяем структуру протоколом ATProtocol, определенного в NetworkEntities
 struct OrderItem: ATProtocol {
     var idAT: String?
     var summary: String?
@@ -30,7 +31,7 @@ struct OrderItem: ATProtocol {
             self.name = name
             self.customer = customer
         }
-    
+    //Прописываем декодер
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: OrderKeys.self)
         self.summary = try container.decodeIfPresent(String.self, forKey: .summary)
@@ -39,7 +40,7 @@ struct OrderItem: ATProtocol {
         self.customer = try container.decodeIfPresent(String.self, forKey: .customer) ?? ""
 
     }
-    
+    //Прописываем переменные для кодирования
     enum OrderKeys: CodingKey {
         case idAT
         case summary
@@ -47,7 +48,7 @@ struct OrderItem: ATProtocol {
         case name
         case customer
     }
-    
+    //Функция зашифровки данных
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: OrderKeys.self)
         try container.encodeIfPresent(self.summary, forKey: .summary)
