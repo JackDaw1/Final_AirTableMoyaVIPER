@@ -2,13 +2,15 @@ import Foundation
 import Moya
 
 final class MoyaNetworkManager {
+    // moyaProvider — это абстракция библиотеки, которая даёт доступ к запросам:
     private var moyaProvider: AnyObject? = nil
     
     var headers: [String : String] {
         var headersDictionary = [String : String]()
         headersDictionary["accept"] = "text/plain"
         headersDictionary["content-type"] = "application/json; charset=utf-8"
-        headersDictionary["Authorization"] = "Bearer keyqXSD5OCr0mUMb0"
+        // AirTable настоятельно советует хранить свои API-ключи при себе, поэтому не забудьте заменить звездочки на свой ключ
+        headersDictionary["Authorization"] = "Bearer *****************"
         return headersDictionary
     }
     
@@ -29,6 +31,7 @@ final class MoyaNetworkManager {
         
         let provider = MoyaProvider<T>(endpointClosure: endpointClosure, stubClosure: MoyaProvider.neverStub)//, stubClosure: MoyaProvider.immediatelyStub)
         self.moyaProvider = provider
+        //Выполняем запросы с помощью moyaProvider
         provider.request(request) { result in
             switch result {
             case .success(let response):
